@@ -8,14 +8,14 @@ namespace DataAccess.Mappings
     {
         public void Configure(EntityTypeBuilder<Lesson> builder)
         {
-            builder.HasKey(t => t.ID);
+            builder.HasKey(t => t.Id);
 
             builder.Property(t => t.Name).HasMaxLength(50);
             builder.Property(t => t.IsActiveData).HasDefaultValue(true);
 
             builder.ToTable("Lessons");
 
-            builder.Property(t => t.ID).HasColumnName("ID");
+            builder.Property(t => t.Id).HasColumnName("ID");
             builder.Property(t => t.TeacherID).HasColumnName("TeacherID");
             builder.Property(t => t.Name).HasColumnName("Name");
 

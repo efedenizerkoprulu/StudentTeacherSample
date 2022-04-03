@@ -14,6 +14,7 @@ namespace business.DependencyReolvers.Ninject
         {
             var kernel = new StandardKernel(new BusinessModule());
             return kernel.Get<T>();
+            // normalde bunun yapısıda direk const. vererek yapmak ama bu form da yemiyor ninject güzell ;)
         }
     }
 }

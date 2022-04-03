@@ -7,13 +7,12 @@ using System.Threading.Tasks;
 
 namespace Entities.Concrete
 {
-    public class Teacher : IEntity
+    public class Teacher : ManageID,IEntity
     {
         public Teacher()
         {
             Lessons = new List<Lesson>();
         }
-        public int ID { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Email { get; set; }

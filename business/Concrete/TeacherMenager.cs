@@ -23,7 +23,7 @@ namespace business.Concrete
         }
         public IResult AddTeacher(Teacher entity)
         {
-            entity.ID = default;
+            entity.Id = default;
             IResult result = BusinessRules.Run(IsExsistEmailSymbol(entity));
             if (result!= null)
             {
@@ -45,7 +45,7 @@ namespace business.Concrete
 
         public IDataResult<Teacher> GetTeacher(int id)
         {
-            return new SuccessDataResult<Teacher>(_teacherDal.Get(x=>x.ID==id));
+            return new SuccessDataResult<Teacher>(_teacherDal.Get(x=>x.Id==id));
         }
 
         public IResult IsExsistEmailSymbol(Teacher TeacherEmail)

@@ -34,22 +34,22 @@ namespace business.Concrete
 
         public IDataResult<Lesson> GetLesson(int id)
         {
-           return new SuccessDataResult<Lesson>(_lessonDal.Get(x => x.ID == id));
+           return new SuccessDataResult<Lesson>(_lessonDal.Get(x => x.Id == id));
         }
 
         public IDataResult<List<Teacher>> GetTeacherName()
         {
-            return new SuccessDataResult<List<Teacher>>(_lessonDal.GetTeacherNane());
+            return new SuccessDataResult<List<Teacher>>(_lessonDal.GetTeacherName());
         }
 
         public IDataResult<List<TeacherStudentDTO>> ListLessons()
         {
-            return new SuccessDataResult<List<TeacherStudentDTO>>(_lessonDal.teacherStudents());
+            return new SuccessDataResult<List<TeacherStudentDTO>>(_lessonDal.GetListLesson());
         }
 
         public IResult PassiveData(int id)
         {
-            _lessonDal.PassiveData(id);
+            _lessonDal.SetPassiveData(id);
             return new SuccessResult();
         }
 

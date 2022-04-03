@@ -13,7 +13,7 @@ namespace DataAccess.Mappings
     {
         public void Configure(EntityTypeBuilder<Student> builder)
         {
-            builder.HasKey(t => t.ID);
+            builder.HasKey(t => t.Id);
 
             builder.Property(t => t.Name).HasMaxLength(20);
             builder.Property(t=> t.Surname).HasMaxLength(20);
@@ -23,7 +23,7 @@ namespace DataAccess.Mappings
 
             builder.ToTable("Students");
 
-            builder.Property(t=> t.ID).HasColumnName("ID");
+            builder.Property(t=> t.Id).HasColumnName("ID");
             builder.Property(t => t.Name).HasColumnName("Name");
             builder.Property(t => t.Surname).HasColumnName("Surname");
             builder.Property(t => t.Email).HasColumnName("Email");

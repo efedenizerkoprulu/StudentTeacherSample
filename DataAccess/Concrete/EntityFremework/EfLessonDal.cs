@@ -12,51 +12,49 @@ namespace DataAccess.Concrete.EntityFremework
 {
     public class EfLessonDal : EntityRepositoryBase<Lesson, SampleContext>, ILessonDal
     {
-        public List<Teacher> GetTeacherNane()
+        public List<Teacher> GetTeacherName()
         {
 
             using (SampleContext context = new SampleContext())
             {
-                var getName = from t in context.Teachers
-                              select new Teacher
-                              {
-                                  ID = t.ID,
-                                  Name = t.Name,
-                              };
-                return getName.ToList();
+                var getName = context.Teachers.Select(t => new Teacher
+                {
+                    Id = t.Id,
+                    Name = t.Name
+                }).ToList();
+                return getName;
             }
 
         }
 
-        public void PassiveData(int id)
+        public void SetPassiveData(int id)
         {
             using (SampleContext context = new SampleContext())
             {
-                var getLesson = Get(X => X.ID == id);
-                getLesson.IsActiveData=false;
-                context.Entry(getLesson).Property("IsActiveData").IsModified = true;
+                var getLesson = Get(X => X.Id == id);
+                getLesson.IsActiveData = false;
+                context.Update(getLesson);
                 context.SaveChanges();
 
             }
         }
 
-        public List<TeacherStudentDTO> teacherStudents()
+        public List<TeacherStudentDTO> GetListLesson()
         {
             using (SampleContext context = new SampleContext())
             {
-                var getData = (from l in context.Lessons
-                              join t in context.Teachers
-                              on l.TeacherID equals t.ID
-                              select new TeacherStudentDTO
-                              {
-                                  LessonId = l.ID,
-                                  LessonName = l.Name,
-                                  TeacherName = t.Name,
-                                  IsActiveData=l.IsActiveData
-                              }).Where(d=> d.IsActiveData==true).ToList();
-                return getData;
-                
-                
+                var result = context.Lessons.Join(context.Teachers,
+                   lesson => lesson.TeacherID, teacher => teacher.Id, (lesson, teacher) => new TeacherStudentDTO
+                   {
+                       LessonId = lesson.Id,
+                       TeacherName = teacher.Name,
+                       LessonName = lesson.Name,
+                       IsActiveData = lesson.IsActiveData
+                   }).Where(s => s.IsActiveData == true);
+
+                return result.ToList();
+
+
             }
         }
     }

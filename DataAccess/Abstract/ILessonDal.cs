@@ -11,8 +11,8 @@ namespace DataAccess.Abstract
 {
     public interface ILessonDal:IEntityRepository<Lesson>
     {
-        public List<Teacher> GetTeacherNane();
-        public List<TeacherStudentDTO> teacherStudents();
-        public void PassiveData(int id); 
+        public List<Teacher> GetTeacherName();
+        public List<TeacherStudentDTO> GetListLesson();
+        public void SetPassiveData(int id); 
     }
 }

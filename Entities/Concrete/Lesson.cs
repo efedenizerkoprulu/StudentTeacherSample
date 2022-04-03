@@ -7,13 +7,12 @@ using System.Threading.Tasks;
 
 namespace Entities.Concrete
 {
-    public class Lesson : IEntity
+    public class Lesson : ManageID,IEntity
     {
-        public int ID { get; set; }
         public int TeacherID { get; set; }
         public string Name { get; set; }
         public bool IsActiveData { get; set; }
         public Teacher Teacher { get; set; }
-
+        // bunu da böyle düzelttim id sınıfı var ordan tek atıyor 
     }
 }

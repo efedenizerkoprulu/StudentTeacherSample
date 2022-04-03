@@ -54,7 +54,7 @@ namespace UI.Forms
 
         private void btnAddLesson_Click(object sender, EventArgs e)
         {
-            lesson.ID = 0;
+            lesson.Id = 0;
             lesson.Name = txtLessonName.Text;;
             lesson.TeacherID = Convert.ToInt32(cbTeacherName.SelectedValue);
             try

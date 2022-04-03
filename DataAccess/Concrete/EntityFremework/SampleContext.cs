@@ -22,9 +22,8 @@ namespace DataAccess.Concrete.EntityFremework
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new LessonMap());
-            modelBuilder.ApplyConfiguration(new StudentMap());
-            modelBuilder.ApplyConfiguration(new TeacherMap());
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(LessonMap).Assembly);
+           
         }
     }
 }

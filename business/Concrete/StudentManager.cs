@@ -66,7 +66,7 @@ namespace business.Concrete
         public IDataResult<Student> GetStudent(int id)
         {
 
-            return new SuccessDataResult<Student>(_studentDal.Get(x => x.ID == id));
+            return new SuccessDataResult<Student>(_studentDal.Get(x => x.Id == id));
         }
     }
 }

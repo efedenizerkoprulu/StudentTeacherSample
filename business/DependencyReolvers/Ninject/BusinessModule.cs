@@ -22,6 +22,8 @@ namespace business.DependencyReolvers.Ninject
             Bind<ITeacherDal>().To<EfTeacherDal>().InSingletonScope();
             Bind<ILessonDal>().To<EfLessonDal>().InSingletonScope();
             Bind<IStudentDal>().To<EfStudentDal>().InSingletonScope();
+            // abi bunu kllanmışındır illaki
+            // ne verirsen onu çağır duyorsun burda mesela evet çok iyi 
         }
     }
 }
